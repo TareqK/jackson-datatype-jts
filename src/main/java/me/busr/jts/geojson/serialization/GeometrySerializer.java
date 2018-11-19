@@ -1,17 +1,55 @@
-package com.bedatadriven.jackson.datatype.jts.serialization;
+package me.busr.jts.geojson.serialization;
 
+import static me.busr.jts.geojson.common.GeoJson.COORDINATES;
+import static me.busr.jts.geojson.common.GeoJson.GEOMETRIES;
+import static me.busr.jts.geojson.common.GeoJson.GEOMETRY_COLLECTION;
+import static me.busr.jts.geojson.common.GeoJson.LINE_STRING;
+import static me.busr.jts.geojson.common.GeoJson.MULTI_LINE_STRING;
+import static me.busr.jts.geojson.common.GeoJson.MULTI_POINT;
+import static me.busr.jts.geojson.common.GeoJson.MULTI_POLYGON;
+import static me.busr.jts.geojson.common.GeoJson.POINT;
+import static me.busr.jts.geojson.common.GeoJson.POLYGON;
+import static me.busr.jts.geojson.common.GeoJson.TYPE;
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.vividsolutions.jts.geom.*;
-
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import java.io.IOException;
 import java.util.Arrays;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.geom.GeometryCollection;
+import org.locationtech.jts.geom.LineString;
+import org.locationtech.jts.geom.MultiLineString;
+import org.locationtech.jts.geom.MultiPoint;
+import org.locationtech.jts.geom.MultiPolygon;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.Polygon;
 
-import static com.bedatadriven.jackson.datatype.jts.GeoJson.*;
 
-public class GeometrySerializer extends JsonSerializer<Geometry> {
+
+public class GeometrySerializer extends StdSerializer<Geometry> {
+
+    public GeometrySerializer(Class<Geometry> t) {
+        super(t);
+    }
+
+    public GeometrySerializer(JavaType type) {
+        super(type);
+    }
+
+    public GeometrySerializer(Class<?> t, boolean dummy) {
+        super(t, dummy);
+    }
+
+    public GeometrySerializer(StdSerializer<?> src) {
+        super(src);
+    }
+    
+    public GeometrySerializer(){
+        super(Geometry.class);
+    }
+
 
 	@Override
 	public void serialize(Geometry value, JsonGenerator jgen,
@@ -180,5 +218,6 @@ public class GeometrySerializer extends JsonSerializer<Geometry> {
                 }
 		jgen.writeEndArray();
 	}
+
 
 }

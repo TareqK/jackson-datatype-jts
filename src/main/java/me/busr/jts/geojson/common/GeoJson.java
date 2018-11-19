@@ -1,4 +1,4 @@
-package com.bedatadriven.jackson.datatype.jts;
+package me.busr.jts.geojson.common;
 
 
 public class GeoJson {

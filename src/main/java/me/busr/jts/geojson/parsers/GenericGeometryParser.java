@@ -1,14 +1,20 @@
-package com.bedatadriven.jackson.datatype.jts.parsers;
+package me.busr.jts.geojson.parsers;
 
+import static me.busr.jts.geojson.common.GeoJson.GEOMETRY_COLLECTION;
+import static me.busr.jts.geojson.common.GeoJson.LINE_STRING;
+import static me.busr.jts.geojson.common.GeoJson.MULTI_LINE_STRING;
+import static me.busr.jts.geojson.common.GeoJson.MULTI_POINT;
+import static me.busr.jts.geojson.common.GeoJson.MULTI_POLYGON;
+import static me.busr.jts.geojson.common.GeoJson.POINT;
+import static me.busr.jts.geojson.common.GeoJson.POLYGON;
+import static me.busr.jts.geojson.common.GeoJson.TYPE;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.GeometryFactory;
-
 import java.util.HashMap;
 import java.util.Map;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.geom.GeometryFactory;
 
-import static com.bedatadriven.jackson.datatype.jts.GeoJson.*;
 
 /**
  * Created by mihaildoronin on 11/11/15.

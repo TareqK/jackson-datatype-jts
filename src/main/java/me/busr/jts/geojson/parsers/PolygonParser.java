@@ -1,10 +1,12 @@
-package com.bedatadriven.jackson.datatype.jts.parsers;
+package me.busr.jts.geojson.parsers;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.vividsolutions.jts.geom.*;
 
-import static com.bedatadriven.jackson.datatype.jts.GeoJson.COORDINATES;
+import static me.busr.jts.geojson.common.GeoJson.COORDINATES;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.LinearRing;
+import org.locationtech.jts.geom.Polygon;
 
 /**
  * Created by mihaildoronin on 11/11/15.
